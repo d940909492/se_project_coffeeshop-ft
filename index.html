@@ -8,7 +8,6 @@
     <meta name="author" content="Software Engineer" />
     <meta name="keywords" content="HTML, CSS" />
     <link rel="stylesheet" href="pages/index.css" />
-    <link rel="stylesheet" href="vendor/normalize.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,10 +27,10 @@
             class="nav__logo"
           />
           <ul class="nav__links">
-            <li><a class="nav__link">Recipes</a></li>
-            <li><a class="nav__link">Book a table</a></li>
-            <li><a class="nav__link">Menu</a></li>
-            <li><a class="nav__link">Contacts</a></li>
+            <li><a href="#recipe" class="nav__link">Recipes</a></li>
+            <li><a href="#reservation" class="nav__link">Book a table</a></li>
+            <li><a href="#menu" class="nav__link">Menu</a></li>
+            <li><a href="#contact" class="nav__link">Contacts</a></li>
           </ul>
         </nav>
         <h1 class="header__title">
@@ -61,7 +60,7 @@
 
       <main class="content">
         <!-- Add the recipes section here -->
-        <section class="recipes">
+        <section id="recipe" class="recipes">
           <h2 class="recipes__title">Recipes</h2>
           <p class="recipes__subtitle">
             Check out some recipes we've collected for your home-brewing
@@ -100,7 +99,7 @@
         </section>
 
         <!-- stage 2 -->
-        <section class="reservation">
+        <section id="reservation" class="reservation">
           <h2 class="reservation__title">Book a table</h2>
           <form class="form reservation__form">
             <fieldset class="form__fieldset">
@@ -147,9 +146,24 @@
                 required
               />
 
+              <!-- this is my old way to add button and then I realized is much easier if I put it outside the fieldset-->
               <!--  <button type="submit" class="form__button">Book a table</button> -->
             </fieldset>
-            <button type="submit" class="form__button">Book a table</button>
+            <!-- click the button and u would go to true table page -->
+            <button
+              type="button"
+              class="form__button"
+              onclick="goToBookingPage()"
+            >
+              Book a table
+            </button>
+
+            <script>
+              function goToBookingPage() {
+                window.location.href =
+                  "https://www.ikea.com/us/en/cat/tables-700675/";
+              }
+            </script>
 
             <label class="form__label form__label_checkbox">
               <input
@@ -163,10 +177,112 @@
             </label>
           </form>
         </section>
+
+        <!-- stage 3 - menu -->
+        <section id="menu" class="menu">
+          <h2 class="menu__title">Menu</h2>
+          <p class="menu__subtitle">
+            We brew coffee from locally roasted, Fairtrade certified beans and
+            use biodegradable cups. All teas from our collection are $2/cup.
+          </p>
+          <ul class="menu__cards">
+            <li class="card">
+              <h3 class="card__title">Filter</h3>
+              <!--<li class="card__list-item">Name<span class="card__list-divider">.</span>price</li>-->
+              <ul class="card__list">
+                <li class="card__list-item">
+                  Regular (12 oz) <span class="card__list-divider"></span> $1
+                </li>
+                <li class="card__list-item">
+                  Large (16 oz) <span class="card__list-divider"></span> $1.25
+                </li>
+                <li class="card__list-item">
+                  XL (20 oz) <span class="card__list-divider"></span> $1.5
+                </li>
+                <li class="card__list-item">
+                  Party-size (24 oz, decaf)
+                  <span class="card__list-divider"></span> $1.75
+                </li>
+                <li class="card__list-item">
+                  Iced Coffee (16 oz)
+                  <span class="card__list-divider"></span> $1.25
+                </li>
+              </ul>
+            </li>
+
+            <li class="card">
+              <h3 class="card__title">Espresso</h3>
+              <!--<li class="card__list-item">Name<span class="card__list-divider">.</span>price</li>-->
+              <ul class="card__list">
+                <li class="card__list-item">
+                  Macchiato <span class="card__list-divider"></span> $2.25
+                </li>
+                <li class="card__list-item">
+                  Cortado <span class="card__list-divider"></span> $2.5
+                </li>
+                <li class="card__list-item">
+                  Mocha <span class="card__list-divider"></span> $3
+                </li>
+                <li class="card__list-item">
+                  Sunrise in the Bay Area (decaf)
+                  <span class="card__list-divider"></span> $10
+                </li>
+              </ul>
+            </li>
+
+            <li class="card">
+              <h3 class="card__title">Baked Goods</h3>
+              <!--<li class="card__list-item">Name<span class="card__list-divider">.</span>price</li>-->
+              <ul class="card__list">
+                <li class="card__list-item">
+                  Almond Croissant <span class="card__list-divider"></span> $2
+                </li>
+                <li class="card__list-item">
+                  Banana Bread <span class="card__list-divider"></span> $1.75
+                </li>
+                <li class="card__list-item">
+                  Key Lime Pie <span class="card__list-divider"></span> $3
+                </li>
+                <li class="card__list-item">
+                  Blue Velvet Cake
+                  <span class="card__list-divider"></span> $3.75
+                </li>
+                <li class="card__list-item">
+                  Web Cookie <span class="card__list-divider"></span> $2
+                </li>
+                <li class="card__list-item">
+                  Fresh Bug’uette
+                  <span class="card__list-divider"></span> $0.25
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- stage 3 - about-->
+        <section class="about">
+          <div class="about__circle"></div>
+          <div class="about__circle about__circle_animation_blurred"></div>
+          <h2 class="about__title">About the coffee shop</h2>
+          <div class="about__content">
+            <p class="about__paragraph">
+              Our coffee shop is located in the Triple Peaks Library. It
+              features 6 tables and free WiFi.
+            </p>
+            <p class="about__paragraph">
+              Our main mission is keeping guests cozy and energized.
+            </p>
+            <p class="about__paragraph">
+              Besides that, we try to reduce our environmental impact — so we
+              don't sell single-use cups. But you can buy one of our reusable
+              cups!
+            </p>
+          </div>
+        </section>
       </main>
 
       <footer class="footer">
-        <div class="footer__content">
+        <div id="contact" class="footer__content">
           <img
             src="./images/logo_coffeeshop_light.svg"
             alt="Triple Peaks Logo"
@@ -176,7 +292,7 @@
             <h4 class="footer__social-heading">Social media</h4>
             <ul class="footer__list">
               <li class="footer__list-item">
-                <a href="#" class="footer__social-link">
+                <a href="https://www.facebook.com/" class="footer__social-link">
                   <img
                     src="./images/facebook_white.svg"
                     alt="Facebook icon"
@@ -186,7 +302,10 @@
                 </a>
               </li>
               <li class="footer__list-item">
-                <a href="#" class="footer__social-link">
+                <a
+                  href="https://www.instagram.com/"
+                  class="footer__social-link"
+                >
                   <img
                     src="./images/instagram_white.svg"
                     alt="Instagram icon"
